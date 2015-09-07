@@ -6,5 +6,7 @@ import (
 )
 
 func init() {
-    beego.Router("/", &controllers.MainController{})
+	beego.Router("/hook", &controllers.HookController{}, "post:PostHook")
+	beego.Router("/log", &controllers.HookController{}, "*:GetLog")
+	//beego.
 }
