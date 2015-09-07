@@ -10,17 +10,18 @@ import (
 
 func RunCmd(cmdName string, cmdArgs []string) {
 	cmd := exec.Command(cmdName, cmdArgs...)
+	//cmd := exec.Command("git", "--git-dir=/Users/luxingmin/Documents/go/src/blog/.git", "pull", "origin", "master")
 	printCommand(cmd)
 	output, err := cmd.CombinedOutput()
 	printError(err)
 	printOutput(output) // => go version go1.3 darwin/amd64
 }
 func printCommand(cmd *exec.Cmd) {
-	fmt.Printf("==> Executing: %s\n", strings.Join(cmd.Args, " "))
+	fmt.Printf("==> Executing: \n%s\n", strings.Join(cmd.Args, " "))
 }
 func printOutput(outs []byte) {
 	if len(outs) > 0 {
-		fmt.Printf("==> Output: %s\n", string(outs))
+		fmt.Printf("==> Output: \n%s\n", string(outs))
 	}
 }
 func printError(err error) {
